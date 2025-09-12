@@ -54,10 +54,9 @@ export const Header = () => {
             {!loading && (
               user ? (
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <User className="h-4 w-4" />
-                    <span className="text-sm">{user.email}</span>
-                  </div>
+                  <Button variant="ghost" asChild>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </Button>
                   <Button variant="ghost" onClick={handleSignOut} className="flex items-center gap-2">
                     <LogOut className="h-4 w-4" />
                     <span>Sign Out</span>
@@ -109,10 +108,9 @@ export const Header = () => {
                 {!loading && (
                   user ? (
                     <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-muted-foreground px-3 py-2">
-                        <User className="h-4 w-4" />
-                        <span className="text-sm">{user.email}</span>
-                      </div>
+                      <Button variant="ghost" asChild>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </Button>
                       <Button variant="ghost" onClick={handleSignOut} className="w-full justify-start">
                         <LogOut className="h-4 w-4 mr-2" />
                         Sign Out
