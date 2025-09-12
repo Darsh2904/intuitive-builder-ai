@@ -14,7 +14,287 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      companies: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          industry: string | null
+          locations: string[] | null
+          logo_url: string | null
+          name: string
+          required_skills: string[] | null
+          size: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          industry?: string | null
+          locations?: string[] | null
+          logo_url?: string | null
+          name: string
+          required_skills?: string[] | null
+          size?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          industry?: string | null
+          locations?: string[] | null
+          logo_url?: string | null
+          name?: string
+          required_skills?: string[] | null
+          size?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      mock_tests: {
+        Row: {
+          company_id: string | null
+          created_at: string
+          description: string | null
+          duration_minutes: number | null
+          id: string
+          max_score: number | null
+          questions: Json | null
+          test_type: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_id?: string | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          max_score?: number | null
+          questions?: Json | null
+          test_type?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          max_score?: number | null
+          questions?: Json | null
+          test_type?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mock_tests_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          degree: string | null
+          email: string | null
+          full_name: string | null
+          graduation_year: number | null
+          id: string
+          phone: string | null
+          skills: string[] | null
+          target_companies: string[] | null
+          university: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          degree?: string | null
+          email?: string | null
+          full_name?: string | null
+          graduation_year?: number | null
+          id?: string
+          phone?: string | null
+          skills?: string[] | null
+          target_companies?: string[] | null
+          university?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          degree?: string | null
+          email?: string | null
+          full_name?: string | null
+          graduation_year?: number | null
+          id?: string
+          phone?: string | null
+          skills?: string[] | null
+          target_companies?: string[] | null
+          university?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      roadmaps: {
+        Row: {
+          ai_generated: boolean | null
+          company_id: string | null
+          created_at: string
+          description: string | null
+          difficulty_level: string | null
+          estimated_duration_weeks: number | null
+          id: string
+          milestones: Json | null
+          skills_to_learn: string[] | null
+          target_role: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_generated?: boolean | null
+          company_id?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          estimated_duration_weeks?: number | null
+          id?: string
+          milestones?: Json | null
+          skills_to_learn?: string[] | null
+          target_role?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_generated?: boolean | null
+          company_id?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          estimated_duration_weeks?: number | null
+          id?: string
+          milestones?: Json | null
+          skills_to_learn?: string[] | null
+          target_role?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roadmaps_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      test_results: {
+        Row: {
+          answers: Json | null
+          completed_at: string
+          feedback: string | null
+          id: string
+          score: number | null
+          test_id: string
+          time_taken_minutes: number | null
+          user_id: string
+        }
+        Insert: {
+          answers?: Json | null
+          completed_at?: string
+          feedback?: string | null
+          id?: string
+          score?: number | null
+          test_id: string
+          time_taken_minutes?: number | null
+          user_id: string
+        }
+        Update: {
+          answers?: Json | null
+          completed_at?: string
+          feedback?: string | null
+          id?: string
+          score?: number | null
+          test_id?: string
+          time_taken_minutes?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "test_results_test_id_fkey"
+            columns: ["test_id"]
+            isOneToOne: false
+            referencedRelation: "mock_tests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_progress: {
+        Row: {
+          completed: boolean | null
+          completion_date: string | null
+          created_at: string
+          id: string
+          milestone_id: string
+          notes: string | null
+          roadmap_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean | null
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          milestone_id: string
+          notes?: string | null
+          roadmap_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed?: boolean | null
+          completion_date?: string | null
+          created_at?: string
+          id?: string
+          milestone_id?: string
+          notes?: string | null
+          roadmap_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_progress_roadmap_id_fkey"
+            columns: ["roadmap_id"]
+            isOneToOne: false
+            referencedRelation: "roadmaps"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
