@@ -9,6 +9,9 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import CreateRoadmap from "./pages/CreateRoadmap";
 import RoadmapDetail from "./pages/RoadmapDetail";
+import MockTests from "./pages/MockTests";
+import CreateTest from "./pages/CreateTest";
+import TakeTest from "./pages/TakeTest";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-roadmap" element={<CreateRoadmap />} />
             <Route path="/roadmap/:id" element={<RoadmapDetail />} />
+            <Route path="/mock-tests" element={<MockTests />} />
+            <Route path="/create-test" element={<CreateTest />} />
+            <Route path="/take-test/:id" element={<TakeTest />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

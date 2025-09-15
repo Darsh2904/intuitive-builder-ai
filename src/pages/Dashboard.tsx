@@ -129,16 +129,28 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">
-            Welcome to your Dashboard
-          </h2>
-          <p className="text-muted-foreground">
-            Track your progress and continue your placement preparation journey
-          </p>
-        </div>
+        <div className="container mx-auto px-4 py-8">
+          {/* Welcome Section */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold mb-2">
+              Welcome to your Dashboard
+            </h2>
+            <p className="text-muted-foreground">
+              Track your progress and continue your placement preparation journey
+            </p>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="flex flex-wrap gap-4 mb-8">
+            <Button onClick={() => window.location.href = '/create-roadmap'}>
+              <Plus className="h-4 w-4 mr-2" />
+              Create Roadmap
+            </Button>
+            <Button variant="outline" onClick={() => window.location.href = '/mock-tests'}>
+              <Target className="h-4 w-4 mr-2" />
+              Practice Tests
+            </Button>
+          </div>
 
         <div className="grid gap-6">
           {/* Profile Card */}
@@ -205,12 +217,18 @@ const Dashboard = () => {
             <Card>
               <CardHeader className="flex flex-row items-center gap-2">
                 <Trophy className="h-5 w-5 text-primary" />
-                <CardTitle className="text-lg">Test Score Avg</CardTitle>
+                <CardTitle className="text-lg">Mock Tests</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">--</div>
+                <div className="text-2xl font-bold">0</div>
                 <p className="text-sm text-muted-foreground">
-                  Take tests to see your average
+                  <Button 
+                    variant="link" 
+                    className="p-0 h-auto text-sm text-muted-foreground hover:text-primary"
+                    onClick={() => window.location.href = '/mock-tests'}
+                  >
+                    Take practice tests →
+                  </Button>
                 </p>
               </CardContent>
             </Card>
