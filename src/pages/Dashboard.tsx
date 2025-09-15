@@ -225,7 +225,7 @@ const Dashboard = () => {
                   Your latest learning paths and preparation plans
                 </CardDescription>
               </div>
-              <Button size="sm">
+              <Button size="sm" onClick={() => window.location.href = '/create-roadmap'}>
                 <Plus className="h-4 w-4 mr-1" />
                 Create New
               </Button>
@@ -277,7 +277,7 @@ const Dashboard = () => {
                   <p className="text-muted-foreground mb-4">
                     Create your first AI-powered learning roadmap to get started
                   </p>
-                  <Button>
+                  <Button onClick={() => window.location.href = '/create-roadmap'}>
                     <Plus className="h-4 w-4 mr-1" />
                     Create Your First Roadmap
                   </Button>
