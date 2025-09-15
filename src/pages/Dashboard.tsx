@@ -236,7 +236,8 @@ const Dashboard = () => {
                   {roadmaps.map((roadmap) => (
                     <div
                       key={roadmap.id}
-                      className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors"
+                      className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer"
+                      onClick={() => window.location.href = `/roadmap/${roadmap.id}`}
                     >
                       <div className="flex-1">
                         <h4 className="font-medium">{roadmap.title}</h4>
