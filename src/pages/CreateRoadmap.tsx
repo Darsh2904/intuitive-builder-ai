@@ -72,7 +72,7 @@ const CreateRoadmap = () => {
       console.error('Error generating roadmap:', error);
       toast({
         title: "Generation Failed",
-        description: "Unable to generate AI roadmap. Please try again.",
+        description: error?.message || "Unable to generate AI roadmap. Please try again.",
         variant: "destructive",
       });
     } finally {
