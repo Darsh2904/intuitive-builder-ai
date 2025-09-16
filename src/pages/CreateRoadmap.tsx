@@ -26,6 +26,10 @@ const CreateRoadmap = () => {
     duration: '',
   });
 
+  const [aiSkills, setAiSkills] = useState<string[] | null>(null);
+  const [aiMilestones, setAiMilestones] = useState<any[] | null>(null);
+
+
   // Redirect if not logged in
   if (!loading && !user) {
     return <Navigate to="/auth" replace />;
@@ -60,9 +64,13 @@ const CreateRoadmap = () => {
 
       setFormData(prev => ({
         ...prev,
-        title: data.title,
-        description: data.description,
+        title: data.title || prev.title,
+        description: data.description || prev.description,
+        currentSkills: Array.isArray(data.skills) && data.skills.length ? data.skills.join(', ') : prev.currentSkills,
       }));
+
+      setAiSkills(Array.isArray(data.skills) ? data.skills : null);
+      setAiMilestones(Array.isArray(data.milestones) ? data.milestones : null);
 
       toast({
         title: "AI Roadmap Generated!",
@@ -97,6 +105,8 @@ const CreateRoadmap = () => {
         .map(skill => skill.trim())
         .filter(skill => skill.length > 0);
 
+      const finalSkills = aiSkills && aiSkills.length ? aiSkills : skillsArray;
+
       const { error } = await supabase
         .from('roadmaps')
         .insert({
@@ -106,7 +116,8 @@ const CreateRoadmap = () => {
           target_role: formData.targetRole,
           difficulty_level: formData.difficultyLevel,
           estimated_duration_weeks: formData.duration ? parseInt(formData.duration) : null,
-          skills_to_learn: skillsArray,
+          skills_to_learn: finalSkills,
+          milestones: aiMilestones || null,
           ai_generated: true,
         });
 
